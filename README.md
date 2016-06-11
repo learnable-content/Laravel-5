@@ -1,1 +1,3 @@
-# Laravel-5-Basics
+# What is Laravel and what does it do
+
+Laravel was created by Taylor Otwell...
