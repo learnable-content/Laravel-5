@@ -62,4 +62,9 @@ databases:
     - homestead
 ```
 
-Next lets add a line items to our ```/etc/hosts```. Our hosts file is part of our Mac OSX system that tells our mac to go to a certain ip address when we type something in the url. It is a way for us to use homestead.app and route that to the ip address of the homestead vm. ```192.168.10.10  homestead.app``` should be added your ur hosts file. Now lets try to hit the url and see if everything installed correctly.
+Next lets add a line items to our ```/etc/hosts```. Our hosts file is part of our Mac OSX system that tells our mac to go to a certain ip address when we type something in the url. It is a way for us to use homestead.app and route that to the ip address of the homestead vm. ```192.168.10.10  homestead.app``` should be added your ur hosts file. 
+
+Let's install and bring up the vagrant machine now. From the ```~/Homestead``` directory run ```vagrant up```. This will install all the included software
+listed above this will require some time to come up.
+
+Now lets try to hit the url and see if everything installed correctly. Go to your browser and type in ```http://homestead.app```. You should see an nginx error. (checking to see if this is true)
