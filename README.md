@@ -61,13 +61,13 @@ This will load ```~/.homestead/Homestead.yaml``` file for you. This file will be
 ip: "192.168.10.10"
 
 folders:
-    - map: ~/Code # (Mac)
-      to: /home/vagrant/Code # (Virtual Machine)
+    - map: ~/projects # (Mac)
+      to: /home/vagrant/projects # (Virtual Machine)
       type: "nfs"
 
 sites:
     - map: homestead.app
-      to: /home/vagrant/Code/homestead.app/public
+      to: /home/vagrant/projects/homestead.app/public
       
 databases:
     - homestead
