@@ -1,137 +1,151 @@
-# Sending data to our views
+# Setting up our layouts
 
-We have already created our posts controller and have now mapped our route file to that. Now all we have left to do is pull the data form our database and then pass that to our view.
-
-At the top of our controller we need to make sure we map our data file inside of this controller file. We would do so like `use App\Post;`
-
-## index()
-
-The index method should return all posts to the view. Below is how we would achieve that.
+For our layout we will create a folder in `resources/views/layouts/master.blade.php`. I use this one file to control the look and feel of our app. If we need a different type layout then  I can create another layout file. The layout file is nothing more than just a blade template file that we will extend in the other views we created.
 
 ```
-public function index()
-{
-	$posts = Post::all();
-	return view('posts.index', ['posts' => $posts]);
-}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Blog title - @yield('title')</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Link</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <h1>@yield('title')</h1>
+
+    <main class="container">
+        @yield('content')
+    </main>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  </body>
+</html>
 ```
 
-We are saying to find all the posts and hold them behind a variable `$posts`. After that we say to return a view with the view function available to us. The view function accepts a second parameter in an array format. The key of this array is what becomes available to us in the views. To test this out lets create a view in `resources/views/posts/index.blade.php`. The posts folder will not be there so you will need to create it.
+## index.blade.php
 
-Inside of this file just do `<?php dd($posts); ?>`. The `dd()` function tells Laravel to dump data and then die. This function is the best way to test and dump data. Now go to `http://blog.app/posts` to view our handy work.
-
-## show()
-
-The show method is a way that we can show a single blog post.
+Now in our `index.blade.php` file we will extend the master layout and flesh out the blog posts a little more. Here we are printing out and looping through our blog posts. We also use the action helper to pass our action we want to go to and the id for that url. Laravel will take care of the rest and create a nice url for us to go to the single blog post.
 
 ```
-public function show($id)
-{
-	$post = Post::find($id);
-	return view('posts.show', ['post' => $post]);
-}
+@extends('layouts.master')
+
+@section('content')
+    @foreach($posts as $post)
+        <h2><a href="{{ action('PostsController@show', $post->id) }}">{{ $post->title }}</a></h2>
+        <p>{{ $post->body }}</p>
+        <hr>
+    @endforeach
+@endsection
 ```
 
-We tell Laravel to find one blog post with by passing it an id. Remember in routing when we were able to pass a parameter to the url path? When we did Route::resource this route got created with a parameter passed as id in the url. Then we return the view and pass the data that pulled. Again we can create the view for this by adding the following `resources/views/posts/show.blade.php`. In this file you can do `dd($post)`. Notice in each method the difference between singular and plural. We can check this by going to `http://blog.app/posts/1`. The `1` being passed is passed to the show method as `id=1` for our app.
+## show.blade.php
 
-## create()
-
-The create method is what holds our form for creating a post. We use the csrf_field() function that will tell the application that this form should be allowed to submit. This helps with cross site forgery and protects our application from other attacks. The other thing you will notice here is the action helper. This helper creates a url that directs us to the store method in the posts controller. Now visit `http://blog.app/posts/create` to see the form.
+At the show method we extend the master and wrap some html around the rest of our view.
 
 ```
-public function create()
-{
-	return view('posts.create');
-}
+@extends('layouts.master')
+
+@section('content')
+
+    <h1>{{ $post->title }}</h1>
+
+    <p>{{ $post->body }}</p>
+
+    <form method="POST" action="{{ action('PostsController@destroy', $post->id) }}">
+        <input type="hidden" name="_method" value="DELETE">
+        {{ csrf_field() }}
+        <button>Delete Post</button>
+    </form>
+@endsection
 ```
 
-### Our view
+## create.blade.php
 
-Created in `resources/views/posts/create.blade.php`.
-
-```
-<form method="POST" action="{{ action('PostsController@store') }}">
-	{{ csrf_field() }}
-	<input type="text" name="title">
-	<textarea name="body"></textarea>
-	<button>Send</button>
-</form>
-```
-
-## store()
-
-Inside the store method is where we want to handle the creation of a new record.
+We add some more bootstrap templating and now our blog is looking a little better.
 
 ```
-public function store(Request $request)
-{
-	$post = new Post;
-	$post->title = $request->input('title');
-	$post->body = $request->input('body');
-	$post->save();
-}
+@extends('layouts.master')
+
+@section('content')
+    <form method="POST" action="{{ action('PostsController@store') }}">
+        {{ csrf_field() }}
+
+        <div class="form-group">
+            <label for="title" >Blog title</label>
+            <input type="text" name="title" class="form-control" id="title" placeholder="Enter title">
+        </div>
+
+        <div class="form-group">
+            <label for="body">Email address</label>
+            <textarea name="body" id="body" class="form-control" placeholder="Enter body for blog post"></textarea>
+        </div>
+
+        <button class="btn btn-primary">Send</button>
+    </form>
+@endsection
 ```
 
-## edit()
+### edit.blade.php
 
-The edit method we need to first find the record and then pass it to the form. We then send this form to the update method. We visit `http://blog.app/posts/1/edit` to see this method.
-
-```
-public function edit($id)
-{
-	$post = Post::find($id);
-	return view('posts.edit', ['post' => $post]);
-}
-```
-
-### Edit form
-
-Our form is placed in the file `resources/views/posts/edit.blade.php`. The difference here from our create form is we have an added form field that is hidden that tells Laravel we need the Http verb PUT so it can pass to the update() method as opposed to the store() method. Another thing you will notice is the values we pass are pulled from the database. Also we changed our action and passed a second parameter of the id. This will help pass along the correct id that our update methods needs.
+Now our edit view with bootstrap templating wrapped around.
 
 ```
-<form method="POST" action="{{ action('PostsController@update', $post->id) }}">
-    <input type="hidden" name="_method" value="PUT">
-    {{ csrf_field() }}
-    <input type="text" name="title" value="{{ $post->title }}">
-    <textarea name="body">{{ $post->body }}</textarea>
-    <button>Send</button>
-</form>
+@extends('layouts.master')
+
+@section('content')
+    <form method="POST" action="{{ action('PostsController@update', $post->id) }}">
+        {{ csrf_field() }}
+        <input type="hidden" name="_method" value="PUT">
+
+        <div class="form-group">
+            <label for="title" >Blog title</label>
+            <input type="text" name="title" class="form-control" id="title" placeholder="Enter title" value="{{ $post->title }}">
+        </div>
+
+        <div class="form-group">
+            <label for="body">Email address</label>
+            <textarea name="body" id="body" class="form-control" placeholder="Enter body for blog post">{{ $post->body }}</textarea>
+        </div>
+
+        <button class="btn btn-primary">Send</button>
+    </form>
+@endsection
 ```
-
-## update()
-
-Our update is very similar to our store method except we have to find the post and then change the contents of it.
-
-```
-public function update(Request $request, $id)
-{
-	$post = Post::find($id);
-	$post->title = $request->input('title');
-	$post->body = $request->input('body');
-	$post->save();
-}
-```
-
-## destroy()
-
-To pass a deletion of a posts we need to do so from a form in another view. For now I will put the button in the show page. In the `resources/views/posts/show.blade.php` file we will add the form that deletes.
-
-```
-<form method="POST" action="{{ action('PostsController@destroy', $post->id) }}">
-    <input type="hidden" name="_method" value="DELETE">
-    {{ csrf_field() }}
-    <button>Delete Post</button>
-</form>
-```
-
-Now in our destroy method we have to find the id of the post passed and delete it.
-
-```
-public function destroy($id)
-{
-	$post = Post::find($id);
-	$post->delete();
-}
-```
-
-    
