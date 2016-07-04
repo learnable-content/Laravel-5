@@ -1,120 +1,137 @@
-# Setting up our first controllers
+# Sending data to our views
 
-Controllers are the "C" in "MVC" framework. These files hold of alot of the glue that ties our application together. We should be routing to these controllers then our controllers connect to the model and send that data to our view.
+We have already created our posts controller and have now mapped our route file to that. Now all we have left to do is pull the data form our database and then pass that to our view.
 
-## Creating a controller
+At the top of our controller we need to make sure we map our data file inside of this controller file. We would do so like `use App\Post;`
 
-To create a controller you guessed it we are going to be using an artisan command to do so. Inside our virtual machine we would run `php artisan make:controller PhotoController --resource`. This will create a boilerplate controller file that comes along with methods that we can easily tie our routes file to.
+## index()
+
+The index method should return all posts to the view. Below is how we would achieve that.
 
 ```
-<?php
-
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-
-class PostsController extends Controller
+public function index()
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+	$posts = Post::all();
+	return view('posts.index', ['posts' => $posts]);
 }
 ```
 
-Above is the file that was created by our command. Notice the empty methods that we need to fill in. By passing `--recource` to the command we told Laravel that we need resource controller. A resource controller is what is setup with the basic crud features that we would need.
+We are saying to find all the posts and hold them behind a variable `$posts`. After that we say to return a view with the view function available to us. The view function accepts a second parameter in an array format. The key of this array is what becomes available to us in the views. To test this out lets create a view in `resources/views/posts/index.blade.php`. The posts folder will not be there so you will need to create it.
 
-__index()__ - should show all posts.
+Inside of this file just do `<?php dd($posts); ?>`. The `dd()` function tells Laravel to dump data and then die. This function is the best way to test and dump data. Now go to `http://blog.app/posts` to view our handy work.
 
-__create()__ - show a form to create a post.
+## show()
 
-__store()__ - handle the form after submission then save new post.
+The show method is a way that we can show a single blog post.
 
-__show()__ - show a single blog post by passing an id param to this method.
+```
+public function show($id)
+{
+	$post = Post::find($id);
+	return view('posts.show', ['post' => $post]);
+}
+```
 
-__edit()__ - show a form to edit a post. Most likely will have form fields prefilled.
+We tell Laravel to find one blog post with by passing it an id. Remember in routing when we were able to pass a parameter to the url path? When we did Route::resource this route got created with a parameter passed as id in the url. Then we return the view and pass the data that pulled. Again we can create the view for this by adding the following `resources/views/posts/show.blade.php`. In this file you can do `dd($post)`. Notice in each method the difference between singular and plural. We can check this by going to `http://blog.app/posts/1`. The `1` being passed is passed to the show method as `id=1` for our app.
 
-__update()__ - handle the edit form for updating.
+## create()
 
-__destroy()__ - handle the deletion of a post.
+The create method is what holds our form for creating a post. We use the csrf_field() function that will tell the application that this form should be allowed to submit. This helps with cross site forgery and protects our application from other attacks. The other thing you will notice here is the action helper. This helper creates a url that directs us to the store method in the posts controller. Now visit `http://blog.app/posts/create` to see the form.
 
-Also note that there is no code in either of the methods. We have to add the functionality that creates, updates or deletes a posts inside of these methods.
+```
+public function create()
+{
+	return view('posts.create');
+}
+```
 
-## Routing
+### Our view
 
-To take full advantage of what Laravel has to offer we need to route to this controller. Before we just added code in our routes file and it seemed to work but for something more complex we should be routing to our `PostsController` file.
+Created in `resources/views/posts/create.blade.php`.
 
-We can add to the following in our routes file. `Route::resource('posts', 'PostsController');`. This will add 7 routes to our routes:list so we are able to interact with our controller. 
+```
+<form method="POST" action="{{ action('PostsController@store') }}">
+	{{ csrf_field() }}
+	<input type="text" name="title">
+	<textarea name="body"></textarea>
+	<button>Send</button>
+</form>
+```
+
+## store()
+
+Inside the store method is where we want to handle the creation of a new record.
+
+```
+public function store(Request $request)
+{
+	$post = new Post;
+	$post->title = $request->input('title');
+	$post->body = $request->input('body');
+	$post->save();
+}
+```
+
+## edit()
+
+The edit method we need to first find the record and then pass it to the form. We then send this form to the update method. We visit `http://blog.app/posts/1/edit` to see this method.
+
+```
+public function edit($id)
+{
+	$post = Post::find($id);
+	return view('posts.edit', ['post' => $post]);
+}
+```
+
+### Edit form
+
+Our form is placed in the file `resources/views/posts/edit.blade.php`. The difference here from our create form is we have an added form field that is hidden that tells Laravel we need the Http verb PUT so it can pass to the update() method as opposed to the store() method. Another thing you will notice is the values we pass are pulled from the database. Also we changed our action and passed a second parameter of the id. This will help pass along the correct id that our update methods needs.
+
+```
+<form method="POST" action="{{ action('PostsController@update', $post->id) }}">
+    <input type="hidden" name="_method" value="PUT">
+    {{ csrf_field() }}
+    <input type="text" name="title" value="{{ $post->title }}">
+    <textarea name="body">{{ $post->body }}</textarea>
+    <button>Send</button>
+</form>
+```
+
+## update()
+
+Our update is very similar to our store method except we have to find the post and then change the contents of it.
+
+```
+public function update(Request $request, $id)
+{
+	$post = Post::find($id);
+	$post->title = $request->input('title');
+	$post->body = $request->input('body');
+	$post->save();
+}
+```
+
+## destroy()
+
+To pass a deletion of a posts we need to do so from a form in another view. For now I will put the button in the show page. In the `resources/views/posts/show.blade.php` file we will add the form that deletes.
+
+```
+<form method="POST" action="{{ action('PostsController@destroy', $post->id) }}">
+    <input type="hidden" name="_method" value="DELETE">
+    {{ csrf_field() }}
+    <button>Delete Post</button>
+</form>
+```
+
+Now in our destroy method we have to find the id of the post passed and delete it.
+
+```
+public function destroy($id)
+{
+	$post = Post::find($id);
+	$post->delete();
+}
+```
+
+    
