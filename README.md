@@ -32,11 +32,11 @@ Usually I create a main layout file for all my applications. I then use or exten
   </head>
   <body>
     <h1>Title of page</h1>
-    
+
     @section('sidebar')
     	Area for sidebar
     @show
-    
+
     <main>
     	@yield('content')
     </main>
@@ -58,7 +58,7 @@ When we return a view like before we do `return view('posts');` which means we s
 
 @section('sidebar)
 	@parent
-	
+
 	<p>We still have parents content now we are appending to it.</p>
 @endsection
 
@@ -85,7 +85,7 @@ This include works the exact same as our regular include inside of php. Sometime
 
 ## Showing data
 
-So normally in php files we would do `<?php echo $some_variable ?>`. Lets say that this was data coming from the database and someone entered in html to attack our our site then we would do `<?php echo htmlentities('$some_variable'); ?>`. With blade syntax we can do the same like so `{{ $some_variable }}` and that is all we need. There is no need to even open php tags we just put that syntax in our html. Another cool thing to do is for some reason what if you wanted to check the value if it exists and if not display other data. Blade syntax gives us `{{ $some_variable or 'Us this instead' }}`. Saying if `$some_variable` does not exist then use the default string we pass it.
+So normally in php files we would do `<?php echo $some_variable ?>`. Lets say that this was data coming from the database and someone entered in html to attack our our site then we would do `<?php echo htmlentities('$some_variable'); ?>`. With blade syntax we can do the same like so `{{ $some_variable }}` and that is all we need. There is no need to even open php tags we just put that syntax in our html. If you're using a fron-end framework like VueJS you can ignore it `@{{ var }}`. Another cool thing to do is for some reason what if you wanted to check the value if it exists and if not display other data. Blade syntax gives us `{{ $some_variable or 'Us this instead' }}`. Saying if `$some_variable` does not exist then use the default string we pass it.
 
 ## Control structures
 
