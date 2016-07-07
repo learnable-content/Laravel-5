@@ -84,6 +84,26 @@ MAIL_ENCRYPTION=null
 ```
 Your key may be populated with random characters already from our previous command we ran.
 
+We can also use out `Homestead.yaml` to add our environment variables to the server.
+
+```
+variables:
+- key: DB_CONNECTION
+value: mysql
+- key: DB_HOST
+value: 127.0.0.1
+- key: DB_PORT
+value: 3306
+- key: DB_DATABASE
+value: blog_db
+- key: DB_USERNAME
+value: homestead
+- key: DB_PASSWORD
+value: secret
+```
+
+We need to provision our VM again using the `vagrant reload --provision` command because we've updated the Homestead file.
+
 ## Setting up our DB
 
 Change the following section change to the following:
