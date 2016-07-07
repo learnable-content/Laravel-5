@@ -1,10 +1,13 @@
 # What are requests
 
-Requests are any input that comes in from a user. Request can come in from the browser via the `GET` verb and also any requests via `POST`.
+Requests are any input that comes to the server. Request can come in from the browser via the `GET` HTTP verb or any other verb (`POST`, `PUT`, `DELETE`, etc)
 
 Laravel comes with a lot of methods for use to grab this request and use them to pass along information to the rest of our application.
 
 ## Type hinting request
+
+
+I think you should have a separate section talking about Laravel Ioc and dependency injection, because this is not related to controllers and will be needed in every part of the framework (service providers, commands, etc)
 
 Below is an example of the way we will be interfacing with the request object. We will be type hinting the request into our methods to a parameter into the method. Now we can access the name input whether it is a `GET` parameter or if the request is coming in through a `POST` form.
 
@@ -24,6 +27,25 @@ class PostController extends Controller
         // ... code
     }
 }
+```
+
+*Bonus:*
+If the request value is an array, you can access array elements using the dot notation, here's an example:
+
+```
+// request values
+array [
+  "form" => array [
+    "firstname" => "Alan"
+    "lastname" => "Doe"
+  ]
+]
+```
+
+We can get the firstname like this.
+
+```
+$request->input("form.firstname"); // Alan
 ```
 
 ## Other helpful methods
