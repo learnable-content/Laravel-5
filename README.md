@@ -12,6 +12,21 @@ vagrant ssh
 cd ~/projects
 php artisan tinker
 ```
+
+Because we will frequently need to SSH to our Homestead VM, you can add the below bash snippet to make things quicker.
+
+```
+function homestead() {
+    ( cd ~/Homestead && vagrant $* )
+}
+```
+
+We can now SSH to our machine from everywhere:
+
+```
+homestead ssh
+```
+
 Our tinker tool we can do anything we can do in the php repl.
 
 ```
@@ -43,7 +58,6 @@ Then you can also run any of the php array functions like:
      "this",
      "cool",
    ]
->>> 
+>>>
 ```
 You will really see the power behind this tool when we get more into our application. With this tool we can interact with any piece of our application and actually test code before we place it in our apps. Alot of times I use this tool to test model relationships so I know what I will put in my model files.
-
