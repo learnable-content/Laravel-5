@@ -1,16 +1,17 @@
 # What is Laravel and what does it do
 
-Laravel is a MVC php framework that helps with rapid application development. It was created and maintained by Taylor Otwell.
+Laravel is an MVC PHP framework that helps with rapid application development. It was created and maintained by Taylor Otwell.
 
 It has become very popular and is holding a strong community around it.
 
-Some of the tools that it gives you out of the box are User authentication which that outline saves hours of time. Imagine creating a login form, creating a database for your user, hashing the password and creating the session state so you can have a logged in user. With Laravel you get that out of the box.
+Some of the tools that it gives you out of the box are User authentication which that outline saves hours of time. Imagine creating a login form, creating a database for your users, hashing the password and creating the session state so you can have a logged in user. With Laravel you get that out of the box.
 
 ## Routing
+
 Routing is an additional out of the box tool we get that allows us to have pretty urls for each part of the application that we want to expose. The following is a quick example.
 
 ```
-Route::get('/users', 'UsersController@showUser');
+Route::get('/users', 'UsersController@index');
 
 # At the browser do the following
 http://homestead.app/users
@@ -18,11 +19,11 @@ http://homestead.app/users
 
 ## Eloquent ORM
 
-Eloquent ORM is another out of the box tool that gives us easy access to records in a database. So imagine we need to collect all the posts from a blog in a database. Normally, using ```PDO```, for you to do so you would need a sql statement then pull those records out in a usable format. See the following:
+Eloquent ORM is another out of the box tool that gives us easy access to records in a database. So imagine we need to collect all the posts from a blog in a database. Normally, using ```PDO```, for you to do so you would need an SQL statement to pull those records out in a usable format. See the following:
 
 ```
 $stmt = $dbc->query('SELECT * FROM users');
-$stmt->fetch(PDO::FETCH_ASSOC)
+$stmt->fetch(PDO::FETCH_ASSOC);
 ```
 
 With Eloquent ORM you would do the following and have what you need.
@@ -43,4 +44,4 @@ $posts = Posts::paginate(4); // 4 records per page
 {{ $posts->links() }}
 ```
 
-These are just a few of the many tools that we get with Laravel. For every challenge we would face when developing there seems to be a quicker help tool make that time more effecient.
+These are just a few of the many tools that we get with Laravel. For every challenge we would face when developing there seems to be a quicker help tool make that time more efficient.
