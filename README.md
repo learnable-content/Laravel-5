@@ -45,6 +45,10 @@ resources
 	- views
 ```
 
+## tests/
+
+The tests folder holds our applications test cases.
+
 ## gulpfile.js
 
 Laravel wraps the gulpfile.js with it's own library called `Elixir`. This setup gives us what is a called an asset pipeline. We edit this file so when we need our application to handle our assets and in what manner to handle them.
