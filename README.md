@@ -4,7 +4,7 @@ Routing is what allows us to create urls for the user via the browser. For examp
 
 ## HTTP Verbs
 
-Routing also allows us to hit every HTTP verb that we would need to hit. HTTP verbs are something we interact with everyday. When we request a url that would be a `GET` verb and when we post a form that would be the `POST` verb.
+Routing also allows us to hit every HTTP verb that we would need to hit. HTTP verbs are something we interact with everyday. When we request a url that would be a `GET` verb and when we post a form that would be the `POST` verb. (It may also be PUT)
 
 ## Creating a route
 To create a route you would need to do the following to have a url that we can do on the `GET`. We are going to open the `app/Http/routes.php` file.
@@ -21,6 +21,22 @@ Similarly you would create a post the same with one minor difference. Notice the
 ```
 Route::post('another-url', function() {
 	return 'We posted a form';
+});
+```
+
+If you want a route to respond to multiple HTTP request type, you can use the `match` method.
+
+```
+Route::match(['get', 'post'], 'some-url', function () {
+    return 'Test this url';
+});
+```
+
+You can also match a route to any request type using the `any` method.
+
+```
+Route::any('some-url', function () {
+    return 'Test this url';
 });
 ```
 
