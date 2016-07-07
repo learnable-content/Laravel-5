@@ -34,14 +34,11 @@ Included software with the vm:
 
 ## Installing Homestead
 
-First you need [Virtual Box](https://www.virtualbox.org/wiki/Downloads) which is a software that will run your virtual machines should you have several. Another tool you will need is called [Vagrant](http://www.vagrantup.com/downloads.html). Vagrant allows us to run commands from the terminal that interact with our virtual machine.
+First you need to install [Virtual Box](https://www.virtualbox.org/wiki/Downloads) which is a software that will run your virtual machines. Another tool you will need is called [Vagrant](http://www.vagrantup.com/downloads.html). Vagrant makes our VM configurable and distributable using a simple configuration file, and it can be used with Virtual Box, VMware, etc.
 
-After you have vagrant installed you can run the following:
+After you have Vagrant installed you can run the following:
 
 ```
-cd ~
-mkdir Homestead
-cd Homestead/
 vagrant box add laravel/homestead
 ```
 
@@ -50,12 +47,13 @@ Now clone the Homestead repo and run the bash install script.
 ```
 cd ~
 git clone https://github.com/laravel/homestead.git Homestead
+cd Homestead/
 bash init.sh
 ```
 
 ## Configure Homestead
 
-This will load ```~/.homestead/Homestead.yaml``` file for you. This file will be used to configure and install any additional apps that we can develop. The file looks something similar to below which we will be adding to. Everytime we adjust this file for new applications we need to run ```vagrant reload``` from the ```~/Homestead``` directory.
+The `bash init.sh` will load the ```~/.homestead/Homestead.yaml``` file for you. This file will be used to configure and install any additional apps that we can develop. The file looks something similar to below snippet. Every time we adjust this file for new applications we need to run ```vagrant reload``` from the ```~/Homestead``` directory.
 
 ```
 ip: "192.168.10.10"
@@ -68,18 +66,17 @@ folders:
 sites:
     - map: homestead.app
       to: /home/vagrant/projects/homestead.app/public
-      
+
 databases:
     - homestead
 ```
 
 ## Hosts file
 
-Next lets add a line items to our ```/etc/hosts```. Our hosts file is part of our Mac OSX system that tells our mac to go to a certain ip address when we type something in the url. It is a way for us to use homestead.app and route that to the ip address of the homestead vm. ```192.168.10.10  homestead.app``` should be added your ur hosts file. 
+Next lets add a line items to our ```/etc/hosts```. The hosts file is used to map hostnames to addresses. It is a way for us to use `homestead.app` and route that to the ip address of the homestead vm. ```192.168.10.10  homestead.app``` should be added your ur hosts file.
 
 ## Bringing up the virtual machine
 
-Let's install and bring up the vagrant machine now. From the ```~/Homestead``` directory run ```vagrant up```. This will install all the included software
-listed above this will require some time to come up.
+Let's install and bring up the vagrant machine now. From the ```~/Homestead``` directory run ```vagrant up```. This will install all the included software listed above this will require some time to come up.
 
 Now lets try to hit the url and see if everything installed correctly. Go to your browser and type in ```http://homestead.app```. You should see an nginx error. (checking to see if this is true)
