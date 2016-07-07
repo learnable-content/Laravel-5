@@ -13,7 +13,7 @@ cd ~/projects
 php artisan tinker
 ```
 
-Because we will frequently need to SSH to our Homestead VM, you can add the below bash snippet to make things quicker.
+Because we will frequently need to SSH to our Homestead VM, you can add the below bash snippet inside your `~/.bashrc` or `~/.zshrc` to make things quicker.
 
 ```
 function homestead() {
