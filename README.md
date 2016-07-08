@@ -15,6 +15,7 @@ public function index()
 	return view('posts.index', ['posts' => $posts]);
 }
 ```
+**It's considered as a bed practice to dump all data (posts) at once, you should consider using pagination**
 
 We are saying to find all the posts and hold them behind a variable `$posts`. After that we say to return a view with the view function available to us. The view function accepts a second parameter in an array format. The key of this array is what becomes available to us in the views. To test this out lets create a view in `resources/views/posts/index.blade.php`. The posts folder will not be there so you will need to create it.
 
@@ -36,7 +37,7 @@ We tell Laravel to find one blog post with by passing it an id. Remember in rout
 
 ## create()
 
-The create method is what holds our form for creating a post. We use the csrf_field() function that will tell the application that this form should be allowed to submit. This helps with cross site forgery and protects our application from other attacks. The other thing you will notice here is the action helper. This helper creates a url that directs us to the store method in the posts controller. Now visit `http://blog.app/posts/create` to see the form.
+The create method is what holds our form for creating a post. To protect our application from cross-site request forgery we use the `csrf_field` function, which will insert a hidden input containing a CSRF token, and on form submit the `VerifyCsrfToken` is automatically called. You can see it inside the `app\Http\Kernel.php` file under the `$middlewareGroups` array. The other thing you will notice here is the action helper. This helper creates a url that directs us to the store method in the posts controller. Now visit `http://blog.app/posts/create` to see the form.
 
 ```
 public function create()
@@ -69,12 +70,14 @@ public function store(Request $request)
 	$post->title = $request->input('title');
 	$post->body = $request->input('body');
 	$post->save();
+
+    // Should do something here, like returning to the posts listing!
 }
 ```
 
 ## edit()
 
-The edit method we need to first find the record and then pass it to the form. We then send this form to the update method. We visit `http://blog.app/posts/1/edit` to see this method.
+The edit method need to first find the record and then pass it to the form. We then send this form to the update method. We visit `http://blog.app/posts/1/edit` to see this method.
 
 ```
 public function edit($id)
@@ -133,5 +136,3 @@ public function destroy($id)
 	$post->delete();
 }
 ```
-
-    
