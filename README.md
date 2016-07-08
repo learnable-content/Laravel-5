@@ -4,7 +4,7 @@ Controllers are the "C" in "MVC" framework. These files hold of alot of the glue
 
 ## Creating a controller
 
-To create a controller you guessed it we are going to be using an artisan command to do so. Inside our virtual machine we would run `php artisan make:controller PhotoController --resource`. This will create a boilerplate controller file that comes along with methods that we can easily tie our routes file to.
+To create a controller you guessed it we are going to be using an artisan command to do so. Inside our virtual machine we would run `php artisan make:controller PostsController --resource`. This will create a boilerplate controller file that comes along with methods that we can easily tie our routes file to.
 
 ```
 <?php
@@ -117,4 +117,6 @@ Also note that there is no code in either of the methods. We have to add the fun
 
 To take full advantage of what Laravel has to offer we need to route to this controller. Before we just added code in our routes file and it seemed to work but for something more complex we should be routing to our `PostsController` file.
 
-We can add to the following in our routes file. `Route::resource('posts', 'PostsController');`. This will add 7 routes to our routes:list so we are able to interact with our controller. 
+We can add to the following in our routes file. `Route::resource('posts', 'PostsController');`. This will add 7 routes to our routes:list so we are able to interact with our controller.
+
+**Adding the routes separately before using resource routing will make things easier to understand**
