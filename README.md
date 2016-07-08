@@ -114,7 +114,7 @@ We add some more bootstrap templating and now our blog is looking a little bette
         </div>
 
         <div class="form-group">
-            <label for="body">Email address</label>
+            <label for="body">Body</label>
             <textarea name="body" id="body" class="form-control" placeholder="Enter body for blog post"></textarea>
         </div>
 
@@ -141,7 +141,7 @@ Now our edit view with bootstrap templating wrapped around.
         </div>
 
         <div class="form-group">
-            <label for="body">Email address</label>
+            <label for="body">Body</label>
             <textarea name="body" id="body" class="form-control" placeholder="Enter body for blog post">{{ $post->body }}</textarea>
         </div>
 
