@@ -65,4 +65,4 @@ $post->delete();
 
 There are many ways for us to retrieve data from our Post model. Another way to do so is using the `where` clause. You can do `$post = Post::where('title', '=', 'New title');` and that will search the table posts to see where the title is equal to the third parameter passed.
 
-
+**More examples about relations, scopes and guarding fields should be added**
