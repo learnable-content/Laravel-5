@@ -6,6 +6,8 @@ One tool we like to use when creating fake "test" data is a library called [fake
 
 To install the library we can do so by doing `composer require fzaninotto/faker --dev` This will tell our application to intstall the library in the development environment.
 
+**It's always a good idea to have a seeder class for every table and only call the other classes seeders inside the `run` method**
+
 You can now open the `dataabase/seeders/DatabaseSeeder.php` file and put the following.
 
 ```
@@ -44,3 +46,5 @@ php artisan db:seed
 ```
 
 With this setup and our command we easily placed 100 records of fake blog posts in our database. Now we can build an application and test all the views around this data so we can support for multiple records in the database.
+
+**You should be using model factories for seeding the DB, this is one of he main reasons it was added**
