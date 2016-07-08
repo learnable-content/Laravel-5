@@ -1,6 +1,6 @@
 # Running our first migrations
 
-What of the things we will be doing for our application is creating our own migration files. Migrations help us create our own database structure through files. The power behind doing migration files is that we can create databases with one command and if need be we can delete them all and bring them back up again with a few commands.
+One of the things we will be doing for our application is creating our own migration files. Migrations help us create and version our own database structure through files. The power behind doing migration files is that we can create databases with one command and if need be we can delete them all and bring them back up again with a few commands.
 
 ## Setting up Sequel Pro
 
@@ -10,13 +10,13 @@ What of the things we will be doing for our application is creating our own migr
 
 ## Create a Migration
 
-First we run the migration and pass a name to it after that we pass what we call a flag with `--create=posts`. This gives me extra code in our file so we don't have to go searching for it.
+First we run the migration and pass a name to it after that we pass what we call a flag with `--create=posts`. This gives us extra code in our file so we don't have to go searching for it.
 
 ```php artisan make:migration create_posts_table --create=posts```
 
 This created a file for us with the following content:
 
-```
+```php
 <?php
 
 use Illuminate\Database\Schema\Blueprint;
@@ -48,7 +48,7 @@ class CreatePostsTable extends Migration
     }
 }
 ```
-We have an up() method and a down() method. The up() method is where we put the code that will create our database. The current one will only create an id that increments and two timestamp tables. `created_at` and `updated_at` that will be kept up to date by Laravel. Some additional code ebefore we run the migration for our blog posts could be the following.
+We have an up() method and a down() method. The up() method is where we put the code that will create our database. The current one will only create an id that increments and two timestamp fields. `created_at` and `updated_at` that will be kept up to date by Laravel. Some additional code ebefore we run the migration for our blog posts could be the following.
 
 ```
 public function up()
@@ -60,7 +60,7 @@ public function up()
         $table->timestamps();
     });
 }
-``` 
+```
 What we are saying is create a varchar with the name title and then we add a text field with the name body.
 
 You will also notice the `down()` method has `Schema::drop('posts');` this will give us exactly what we need to delete the database so we can restart our database structure.
@@ -69,6 +69,7 @@ You will also notice the `down()` method has `Schema::drop('posts');` this will 
 
 To run our migration we have to do so from the virtual machine. We would run the following.
 
+*Note*: (If you did take my suggestion you can use `homestead ssh`)
 ```
 cd ~/Homestead
 vagrant ssh
