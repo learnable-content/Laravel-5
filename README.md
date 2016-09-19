@@ -8,7 +8,7 @@ Like we discussed before when we return a view `view('posts');` the file can be 
 
 ## Main Layout
 
-Usually I create a main layout file for all my applications. I then use or extend from this layout for all my pages. If for any reason I have that is too different in structure I would then just create another layout for that need. Let's create `resources/views/layouts/master.blade.php` file. Here is where I start the main skeleton structure of the site layout. Since I will probably be using bootstrap I have a bootstrap starter template.
+Usually I create a main layout file for all my applications. I then use or extend from this layout for all my pages. If for any reason I have something that is too different in structure I would then just create another layout for that need. Let's create `resources/views/layouts/master.blade.php` file. Here is where I start the main skeleton structure of the site layout. Since I will probably be using bootstrap I have a bootstrap starter template.
 
 ```
 <!DOCTYPE html>
@@ -49,7 +49,7 @@ Usually I create a main layout file for all my applications. I then use or exten
 </html>
 ```
 
-When we return a view like before we do `return view('posts');` which means we should have file called `resources/views/posts.blade.php`. Inside of this file there is no need to redo the layout again we can just use the html from the main layout. This looks like the following:
+When we return a view like before we do `return view('posts');` which means we should have file called `resources/views/posts.blade.php`. Here there is no need to redo the layout code again as we will be extending that code. This looks like the following:
 
 ```
 @extends('layouts.master')
@@ -85,7 +85,7 @@ This include works the exact same as our regular include inside of php. Sometime
 
 ## Showing data
 
-So normally in php files we would do `<?php echo $some_variable ?>`. Lets say that this was data coming from the database and someone entered in html to attack our our site then we would do `<?php echo htmlentities('$some_variable'); ?>`. With blade syntax we can do the same like so `{{ $some_variable }}` and that is all we need. There is no need to even open php tags we just put that syntax in our html. If you're using a fron-end framework like VueJS you can ignore it `@{{ var }}`. Another cool thing to do is for some reason what if you wanted to check the value if it exists and if not display other data. Blade syntax gives us `{{ $some_variable or 'Us this instead' }}`. Saying if `$some_variable` does not exist then use the default string we pass it.
+So normally in php files we would do `<?php echo $some_variable ?>`. Lets say that this was data coming from the database and someone entered in html to attack our our site then we would do `<?php echo htmlentities('$some_variable'); ?>`. With blade syntax we can do the same like so `{{ $some_variable }}` and that is all we need. If you're using a front-end framework like VueJS you can ignore it `@{{ var }}`. Another cool thing to do is for some reason what if you wanted to check the value if it exists and if not display other data. Blade syntax gives us `{{ $some_variable or 'Us this instead' }}`. Saying if `$some_variable` does not exist then use the default string we pass it.
 
 ## Control structures
 
