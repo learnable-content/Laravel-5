@@ -4,7 +4,7 @@ Seeding our database is when we create test data so we can interact with our app
 
 One tool we like to use when creating fake "test" data is a library called [faker](https://github.com/fzaninotto/Faker). We could use this library to create lots of posts with very little effort.
 
-To install the library we can do so by doing `composer require fzaninotto/faker --dev` This will tell our application to intstall the library in the development environment.
+To install the library we can do so by doing `composer require fzaninotto/faker --dev` This will tell our application to install the library in the development environment.
 
 **It's always a good idea to have a seeder class for every table and only call the other classes seeders inside the `run` method**
 
@@ -47,4 +47,4 @@ php artisan db:seed
 
 With this setup and our command we easily placed 100 records of fake blog posts in our database. Now we can build an application and test all the views around this data so we can support for multiple records in the database.
 
-**You should be using model factories for seeding the DB, this is one of he main reasons it was added**
+**You should be using model factories for seeding the DB, this is one of the main reasons it was added**
