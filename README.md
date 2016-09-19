@@ -1,6 +1,6 @@
 # PHP Artisan Tool
 
-The `Artisan Console` is a great tool that we use for developing our apps. When I mentioned earlier that we generate our `Middleware`, `Controllers`, `Requests` and `Models` this file is the tool is what we use to do so.
+The `Artisan Console` is a great tool that we use for developing our apps. When I mentioned earlier that we generate our `Middleware`, `Controllers`, `Requests` and `Models` we do so through this file.
 
 If we run `php artisan` you will see a list of commands available that we can run to help with our applications.
 
