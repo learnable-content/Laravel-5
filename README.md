@@ -2,9 +2,9 @@
 
 I like to think of middleware as an forced interruption in our code. So in all languages we have our inputs and outputs. When we hit a url at the browser we have an input that is expecting an output. What if we wanted certain criteria for the url that was hit to be met and if not met then force some user behavior to happen.
 
-Think of something simple like a user loggin in. So a user needs to login to view a section of our site. Let's say they visit `http://blog.app/admin` and we don't want to give access to that area unless they are logged in. We would need to interupt the application and route them to the area for logging in before proceeding to the admin area.
+Think of something simple like a user loggin in. So a user needs to login to view a section of our site. Let's say they visit `http://blog.app/admin` and we don't want to give access to that area unless they are logged in. We would need to interrupt the application and route them to the area for logging in before proceeding to the admin area.
 
-Also think of what if the person logged in is not and admin and only an editor  who shouldn't be able to delete posts. We would need to interrupt that route and route them back to the dashboard or something similar.
+Also think of what if the person logged in is not an admin and only an editor  who shouldn't be able to delete posts. We would need to interrupt that route and route them back to the dashboard or something similar.
 
 ## Creating middleware
 
@@ -64,7 +64,7 @@ protected $routeMiddleware = [
     'ageCheck' => \App\Http\Middleware\AgeMiddleware::class,
 ];
 ```
-Where `ageCheck` is the key will will use to reference the middleware we created.
+Where `ageCheck` is the key will use to reference the middleware we created.
 
 ## Adding the middleware to our route
 
@@ -78,7 +78,7 @@ Route::get('fountain-of-youth', ['middleware' => 'ageCheck', function () {
 
 Now we have added our middleware (interrupt) to our route and when we hit the url `blog.dev/fountain-of-youth` you will not be allowed to that path unless you are over 200 years old.
 
-Of course we would somehow need to collect this age information from the user as some point so we can accurately check if they can access this area.
+Of course we would somehow need to collect this age information from the user at some point so we can accurately check if they can access this area.
 
 Our current middleware is called before Laravel handles the request, but you can change that by calling the `$next` pipeline and return the response.
 
