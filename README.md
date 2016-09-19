@@ -1,6 +1,6 @@
 # Sending data to our views
 
-We have already created our posts controller and have now mapped our route file to that. Now all we have left to do is pull the data form our database and then pass that to our view.
+We have already created our posts controller and have now mapped our route file to that. Now all we have left to do is pull the data from our database and then pass that to our view.
 
 At the top of our controller we need to make sure we map our data file inside of this controller file. We would do so like `use App\Post;`
 
@@ -15,7 +15,7 @@ public function index()
 	return view('posts.index', ['posts' => $posts]);
 }
 ```
-**It's considered as a bed practice to dump all data (posts) at once, you should consider using pagination**
+**It's considered as a bad practice to dump all data (posts) at once, you should consider using pagination**
 
 We are saying to find all the posts and hold them behind a variable `$posts`. After that we say to return a view with the view function available to us. The view function accepts a second parameter in an array format. The key of this array is what becomes available to us in the views. To test this out lets create a view in `resources/views/posts/index.blade.php`. The posts folder will not be there so you will need to create it.
 
@@ -33,7 +33,7 @@ public function show($id)
 }
 ```
 
-We tell Laravel to find one blog post with by passing it an id. Remember in routing when we were able to pass a parameter to the url path? When we did Route::resource this route got created with a parameter passed as id in the url. Then we return the view and pass the data that pulled. Again we can create the view for this by adding the following `resources/views/posts/show.blade.php`. In this file you can do `dd($post)`. Notice in each method the difference between singular and plural. We can check this by going to `http://blog.app/posts/1`. The `1` being passed is passed to the show method as `id=1` for our app.
+We tell Laravel to find one blog post by passing it an id. Remember in routing when we were able to pass a parameter to the url path? When we did Route::resource this route got created with a parameter passed as id in the url. Then we return the view and pass the data that pulled. Again we can create the view for this by adding the following `resources/views/posts/show.blade.php`. In this file you can do `dd($post)`. Notice in each method the difference between singular and plural. We can check this by going to `http://blog.app/posts/1`. The `1` being passed is passed to the show method as `id=1` for our app.
 
 ## create()
 
