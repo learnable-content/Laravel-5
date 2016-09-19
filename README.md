@@ -18,7 +18,7 @@ http://homestead.app/users
 
 ## Eloquent ORM
 
-Eloquent ORM is another out of the box tool that gives us easy access to records in a database. So imagine we need to collect all the posts from a blog in a database. Normally, using ```PDO```, for you to do so you would need a sql statement then pull those records out in a usable format. See the following:
+Eloquent ORM is another out of the box tool that gives us easy access to records in a database. So imagine we need to collect all the posts from a blog in a database. Normally, using ```PDO```, you would need a sql statement that would pull those records out in a usable format. See the following:
 
 ```
 $stmt = $dbc->query('SELECT * FROM users');
@@ -43,4 +43,4 @@ $posts = Posts::paginate(4); // 4 records per page
 {{ $posts->links() }}
 ```
 
-These are just a few of the many tools that we get with Laravel. For every challenge we would face when developing there seems to be a quicker help tool make that time more effecient.
+These are just a few of the many tools that we get with Laravel. The repetitive items that you would have to do with regular php applications have been made easier to overcome with these built in out of the box tools.
