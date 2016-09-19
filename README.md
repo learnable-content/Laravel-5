@@ -95,7 +95,7 @@ class PostsController extends Controller
 }
 ```
 
-Above is the file that was created by our command. Notice the empty methods that we need to fill in. By passing `--recource` to the command we told Laravel that we need resource controller. A resource controller is what is setup with the basic crud features that we would need.
+Above is the file that was created by our command. Notice the empty methods that we need to fill in. By passing `--resource` to the command we told Laravel that we need resource controller. A resource controller is what is setup with the basic crud features that we would need.
 
 __index()__ - should show all posts.
 
