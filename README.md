@@ -4,7 +4,7 @@ Laravel is a MVC php framework that helps with rapid application development. It
 
 It has become very popular and is holding a strong community around it.
 
-Some of the tools that it gives you out of the box are User authentication which that outline saves hours of time. Imagine creating a login form, creating a database for your user, hashing the password and creating the session state so you can have a logged in user. With Laravel you get that out of the box.
+Laravel gives you some great tools outside of the box. User authentication is an example of one if these tools that saves lots of time on development. Imagine creating a login form, creating a database for your user, hashing the password and creating the session state so you can have a logged in user. With Laravel you get that out of the box.
 
 ## Routing
 Routing is an additional out of the box tool we get that allows us to have pretty urls for each part of the application that we want to expose. The following is a quick example.
