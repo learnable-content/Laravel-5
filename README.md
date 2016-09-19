@@ -1,16 +1,17 @@
 # What is Laravel and what does it do
 
-Laravel is a MVC php framework that helps with rapid application development. It was created and maintained by Taylor Otwell.
+Laravel is an MVC PHP framework that helps with rapid application development. It was created and maintained by Taylor Otwell.
 
 It has become very popular and is holding a strong community around it.
 
 Laravel gives you some great tools outside of the box. User authentication is an example of one if these tools that saves lots of time on development. Imagine creating a login form, creating a database for your user, hashing the password and creating the session state so you can have a logged in user. With Laravel you get that out of the box.
 
 ## Routing
+
 Routing is an additional out of the box tool we get that allows us to have pretty urls for each part of the application that we want to expose. The following is a quick example.
 
 ```
-Route::get('/users', 'UsersController@showUser');
+Route::get('/users', 'UsersController@index');
 
 # At the browser do the following
 http://homestead.app/users
@@ -22,7 +23,7 @@ Eloquent ORM is another out of the box tool that gives us easy access to records
 
 ```
 $stmt = $dbc->query('SELECT * FROM users');
-$stmt->fetch(PDO::FETCH_ASSOC)
+$stmt->fetch(PDO::FETCH_ASSOC);
 ```
 
 With Eloquent ORM you would do the following and have what you need.
