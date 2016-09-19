@@ -1,6 +1,6 @@
 # PHP Artisan Tinker
 
-One tool that we run with artisan is is tinker. Tinker is a powerful repl that is connected to our application. Repl stands for `read evaluate print loop`. With php we already get a repl if we were to run `php -a`. The difference is with tinker it is connected directly with our application so we can use it to interact with data in our app which we will see how to use in a later lesson.
+One tool that we run with artisan is tinker. Tinker is a powerful repl that is connected to our application. Repl stands for `read evaluate print loop`. With php we already get a repl if we were to run `php -a`. The difference is with tinker it is connected directly with our application so we can use it to interact with data in our app which we will see how to use in a later lesson.
 
 ## Running tinker
 
@@ -27,7 +27,7 @@ We can now SSH to our machine from everywhere:
 homestead ssh
 ```
 
-Our tinker tool we can do anything we can do in the php repl.
+Our tinker tool can do anything we can do in the php repl.
 
 ```
 Psy Shell v0.7.2 (PHP 7.0.1-1+deb.sury.org~trusty+2 — cli) by Justin Hileman
