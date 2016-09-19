@@ -6,11 +6,11 @@ One of the things we will be doing for our application is creating our own migra
 
 [Sequel Pro](http://www.sequelpro.com/) is a nice free tool that allows us to view our mysql databases. They do have a donate button that helps support the development for this project. We can use this tool with the setup below to see any changes that we make in our database.
 
-![Sequel Pro](img/sequel-pro.png "Sequel Pro")
+![Sequel Pro](https://raw.githubusercontent.com/learnable-content/Laravel-5/lesson4.1/images/sequel-pro.png "Sequel Pro")
 
 ## Create a Migration
 
-First we run the migration and pass a name to it after that we pass what we call a flag with `--create=posts`. This gives us extra code in our file so we don't have to go searching for it.
+First we run the migration and pass a name to it which will create our migration file. We can pass what we call a flag with `--create=posts` which gives additional instructions to our migration file. In this case we get extra code in our file so we don't have to go searching for what we need.
 
 ```php artisan make:migration create_posts_table --create=posts```
 
@@ -48,7 +48,7 @@ class CreatePostsTable extends Migration
     }
 }
 ```
-We have an up() method and a down() method. The up() method is where we put the code that will create our database. The current one will only create an id that increments and two timestamp fields. `created_at` and `updated_at` that will be kept up to date by Laravel. Some additional code ebefore we run the migration for our blog posts could be the following.
+We have an up() method and a down() method. The up() method is where we put the code that will create our database. The current one will only create an id that increments and two timestamp fields. `created_at` and `updated_at` that will be kept up to date by Laravel. Some additional code before we run the migration for our blog posts could be the following.
 
 ```
 public function up()
@@ -78,7 +78,7 @@ php artisan migrate:install
 php artisan migrate
 ```
 
-If we connect to our sequel pro you will see a new table called migrations. This table will keep track of all our migrations so when we refresh or reset easily.
+If we connect to our sequel pro you will see a new table called migrations. This table will keep track of all our migrations when we refresh or reset our databases.
 
 The first command will install the migrations table and the second command will install the table `posts` with the tables.
 
