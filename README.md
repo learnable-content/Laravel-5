@@ -29,11 +29,11 @@ public
 		- img
 		- js
 ```
-But this structure is entirely up to your how you want to manage your assets.
+But this structure is entirely up to how you want to manage your assets.
 
 ## resources/
 
-The resources folder is where we work with our assets and in the end they get compiled and placed where they are needed in our `public/` folder. They are compiled with Laravel and also our `gulpfile.js`. `resources/assets` is where we place asset files `js, img, css and/or sass/less` files. We have a `lang` file where we would put any localization language files. We has have our `views` folder where will be placing all of our html files and also where our blade templating will go. The structure looks like this.
+The resources folder is where we work with our assets and in the end they get compiled and placed where they are needed in our `public/` folder. They are compiled with Laravel and also our `gulpfile.js`. `resources/assets` is where we place asset files `js, img, css and/or sass/less` files. We have a `lang` file where we would put any localization language files. We have our `views` folder where will be placing all of our html files and also where our blade templating will go. The structure looks like this.
 
 ```
 resources
@@ -51,4 +51,4 @@ The tests folder holds our applications test cases.
 
 ## gulpfile.js
 
-Laravel wraps the gulpfile.js with it's own library called `Elixir`. This setup gives us what is a called an asset pipeline. We edit this file so when we need our application to handle our assets and in what manner to handle them.
+Laravel wraps the gulpfile.js with it's own library called `Elixir`. This setup gives us what is a called an asset pipeline. We edit this file to tell our application how to manage our assets.
