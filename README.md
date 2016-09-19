@@ -1,6 +1,6 @@
 # The power behind Laravel and next steps
 
-Laravel provides us with a bunch of boiler plate code that we use to do by hand over and over.  As you can swee we didn't need much to have a simple crud operation for our blog example. With very little effor we were able to create 100 test blog posts and loop through them in our view. Then create a link over to the actual blog posts to show the individual posts.
+Laravel provides us with a bunch of boiler plate code that we use to do by hand over and over.  As you can see we didn't need much to have a simple crud operation for our blog example. With very little effort we were able to create 100 test blog posts and loop through them in our view. Then create a link over to the actual blog posts to show the individual posts.
 
 ## Just scratching the surface
 
