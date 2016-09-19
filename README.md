@@ -32,9 +32,9 @@ Route::get('/posts', function() {
 	return view('posts', ['title' => 'A blog title']);
 });
 ```
-We simply pass an array of the information that we want available in the view. The `title` key will  available to us as a variable in the view like so `$title`. If we wanted to pass multiple variables we would just add on the view file.
+We simply pass an array of the information that we want available in the view. The `title` key will be available to us as a variable in the view like so `$title`. If we wanted to pass multiple variables we would just add on the view file.
 
-Alot of times I like to pass multiple pieces of data to the view. I tend to make use of the `compact()` function in php as it makes some things easier to understand. What this does is look for variables with the string names we past and make them part of an array. The array gets passed to the view and the keys are now available as variables in the view.
+Alot of times I like to pass multiple pieces of data to the view. I tend to make use of the `compact()` function in php as it makes some things easier to understand. What this does is look for variables with the string names we passed and make them part of an array. The array gets passed to the view and the keys are now available as variables in the view.
 
 ```
 Route::get('/posts', function() {
