@@ -1,4 +1,4 @@
-![](Laravel_5_Basics_handouts/headings/1.3.png)
+![](headings/1.3.png)
 
 # Installing our first Laravel application
 
