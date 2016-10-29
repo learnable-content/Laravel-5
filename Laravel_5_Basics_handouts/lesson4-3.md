@@ -1,4 +1,4 @@
-![](Laravel_5_Basics_handouts/headings/4.3 .png)
+![](headings/4.3 .png)
 
 PHP Artisan is a very useful tool to interact with your app. Use `php artisan tinker` to open it. To find a post with an id of `1` you can say
 
