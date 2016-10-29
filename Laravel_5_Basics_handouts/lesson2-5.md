@@ -1,4 +1,4 @@
-![](Laravel_5_Basics_handouts/headings/2.5.png)
+![](headings/2.5.png)
 
 # The power behind blade templating
 
