@@ -1,4 +1,4 @@
-![](headings/1.1.png)
+![](Laravel_5_Basics_handouts/headings/1.1.png)
 
 # What is Laravel and what does it do
 
