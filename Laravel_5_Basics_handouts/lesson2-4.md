@@ -1,4 +1,4 @@
-![](Laravel_5_Basics_handouts/headings/2.4 .png)
+![](headings/2.4 .png)
 
 # What are views
 
