@@ -1,4 +1,4 @@
-![](Laravel_5_Basics_handouts/headings/2.3 .png)
+![](headings/2.3 .png)
 
 # What are requests
 
