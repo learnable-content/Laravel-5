@@ -1,3 +1,5 @@
+![](Laravel_5_Basics_handouts/headings/6.2.png)
+
 # Sending data to our views
 
 We have already created our posts controller and have now mapped our route file to that. Now all we have left to do is pull the data from our database and then pass that to our view.
