@@ -1,4 +1,4 @@
-![](Laravel_5_Basics_handouts/headings/6.1.png)
+![](headings/6.1.png)
 
 # Setting up our first controllers
 
