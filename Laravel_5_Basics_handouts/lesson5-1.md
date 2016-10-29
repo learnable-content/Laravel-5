@@ -1,4 +1,4 @@
-![](Laravel_5_Basics_handouts/headings/5.1.png)
+![](headings/5.1.png)
 
 # Creating Models
 
