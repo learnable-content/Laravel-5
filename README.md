@@ -1,4 +1,4 @@
-![](headings/4.1.png)
+![](Laravel_5_Basics_handouts/headings/4.1.png)
 
 # Running our first migrations
 
