@@ -1,4 +1,4 @@
-![](Laravel_5_Basics_handouts/headings/3.3.png)
+![](headings/3.3.png)
 
 # PHP Artisan Tinker
 
