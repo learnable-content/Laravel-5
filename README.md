@@ -47,3 +47,26 @@ $posts = Posts::paginate(4); // 4 records per page
 ```
 
 These are just a few of the many tools that we get with Laravel. The repetitive items that you would have to do with regular php applications have been made easier to overcome with these built in out of the box tools.
+
+# Index for the Laravel 5 Basics course
+
+* [Lesson 1-1](Laravel_5_Basics_handouts/lesson1-1.md)
+* [Lesson 1-2](Laravel_5_Basics_handouts/lesson1-2.md)
+* [Lesson 1-3](Laravel_5_Basics_handouts/lesson1-3.md)
+* [Lesson 2-1](Laravel_5_Basics_handouts/lesson2-1.md)
+* [Lesson 2-2](Laravel_5_Basics_handouts/lesson2-2.md)
+* [Lesson 2-3](Laravel_5_Basics_handouts/lesson2-3.md)
+* [Lesson 2-4](Laravel_5_Basics_handouts/lesson2-4.md)
+* [Lesson 2-5](Laravel_5_Basics_handouts/lesson2-5.md)
+* [Lesson 3-1](Laravel_5_Basics_handouts/lesson3-1.md)
+* [Lesson 3-2](Laravel_5_Basics_handouts/lesson3-2.md)
+* [Lesson 3-3](Laravel_5_Basics_handouts/lesson3-3.md)
+* [Lesson 4-1](Laravel_5_Basics_handouts/lesson4-1.md)
+* [Lesson 4-2](Laravel_5_Basics_handouts/lesson4-2.md)
+* [Lesson 4-3](Laravel_5_Basics_handouts/lesson4-3.md)
+* [Lesson 4-4](Laravel_5_Basics_handouts/lesson4-4.md)
+* [Lesson 5-1](Laravel_5_Basics_handouts/lesson5-1.md)
+* [Lesson 6-1](Laravel_5_Basics_handouts/lesson6-1.md)
+* [Lesson 6-2](Laravel_5_Basics_handouts/lesson6-2.md)
+* [Lesson 7-1](Laravel_5_Basics_handouts/lesson7-1.md)
+* [Lesson 8-1](Laravel_5_Basics_handouts/lesson8-1.md)
