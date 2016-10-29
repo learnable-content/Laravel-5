@@ -1,4 +1,4 @@
-![](Laravel_5_Basics_handouts/headings/3.1.png)
+![](headings/3.1.png)
 
 # Laravel File Structure
 
