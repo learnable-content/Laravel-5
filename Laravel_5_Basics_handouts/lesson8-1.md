@@ -1,4 +1,4 @@
-![](Laravel_5_Basics_handouts/headings/8.1.png)
+![](headings/8.1.png)
 
 # The power behind Laravel and next steps
 
