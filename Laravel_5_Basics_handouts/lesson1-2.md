@@ -1,4 +1,4 @@
-![](Laravel_5_Basics_handouts/headings/1.2.png)
+![](headings/1.2.png)
 
 # Install Prerequisites for Laravel
 
