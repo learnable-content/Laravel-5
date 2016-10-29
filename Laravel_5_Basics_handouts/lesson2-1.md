@@ -1,4 +1,4 @@
-![](Laravel_5_Basics_handouts/headings/2.1.png)
+![](headings/2.1.png)
 
 # What is Routing
 
