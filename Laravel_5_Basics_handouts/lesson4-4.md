@@ -1,4 +1,4 @@
-![](Laravel_5_Basics_handouts/headings/4.4.png)
+![](headings/4.4.png)
 
 Another important feature is **factory**. Factory is new to Laravel 5 and before it came about, we did pretty much everything in seeds. Factories already have the Faker inside of it. Factory can be consumed inside Seeder and also used in tests.
 
