@@ -113,7 +113,7 @@ Route::get('test', function() {
 
     return view('test', compact('title', 'content'));
 });
-``
+```
 
 ## The Power Behind Blade Templating
 
