@@ -11,6 +11,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-    	//
+    	$faker = Faker::create();
+
+        for($i = 1; $i <= 100; $i++) {
+            Post::create(
+                [
+                    'title' => $faker->name,
+                    'body' => $faker->paragraph
+                ]
+            );
+        }
     }
 }
