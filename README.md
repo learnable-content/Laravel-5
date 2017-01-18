@@ -79,7 +79,7 @@ databases:
 
 Next lets add a line to our `/etc/hosts`. The hosts file is used to map hostnames to addresses, for browsers on our computer alone. It is a way for us to use `homestead.app` and route that to the ip address of the Homestead vm. `192.168.10.10  homestead.app` should be added your hosts file.
 
-> Note that you'll need to open this file with sudo, so `sudo nano /etc/hosts` if you're using the in line nano editor. If you intend to use Notepad, etc on Windows, you'll need to open the program as an administrator first, and then edit and save this file.
+> Note that you'll need to open this file with sudo, so `sudo nano /etc/hosts` if you're using the in line nano editor on Linux or macOS. If you intend to use Notepad, etc. on Windows, you'll need to open the program as an administrator first, and then edit and save this file. Its location on Windows is `C:\Windows\System32\drivers\etc\hosts`.
 
 ## Bringing up the virtual machine
 
