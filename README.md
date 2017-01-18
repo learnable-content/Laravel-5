@@ -40,6 +40,8 @@ First you need to install [Virtual Box](https://www.virtualbox.org/wiki/Download
 
 After you have Vagrant installed you can run the following:
 
+>Note that using Linux or macOS terminals, with git and Vagrant both installed, should work fine here. For Windows users, using an alternate terminal like Git Bash (which comes with [Git for Windows](https://git-for-windows.github.io/)) would be ideal rather than trying to use these commands in the Command Prompt.
+
 ```
 vagrant box add laravel/homestead
 ```
@@ -55,7 +57,7 @@ bash init.sh
 
 ## Configure Homestead
 
-The `bash init.sh` will load the ```~/.homestead/Homestead.yaml``` file for you. This file will be used to configure and install any additional apps that we can develop. The file looks something similar to below snippet. Every time we adjust this file for new applications we need to run ```vagrant reload``` from the ```~/Homestead``` directory.
+The `bash init.sh` will load the `~/.homestead/Homestead.yaml` file for you. This file will be used to configure and install any additional apps that we can develop. The file looks something similar to the snippet below. Every time we adjust this file for new applications, we need to run `vagrant reload` from the `~/Homestead` directory.
 
 ```
 ip: "192.168.10.10"
@@ -75,10 +77,10 @@ databases:
 
 ## Hosts file
 
-Next lets add a line to our ```/etc/hosts```. The hosts file is used to map hostnames to addresses. It is a way for us to use `homestead.app` and route that to the ip address of the homestead vm. ```192.168.10.10  homestead.app``` should be added your hosts file.
+Next lets add a line to our `/etc/hosts`. The hosts file is used to map hostnames to addresses, for browsers on our computer alone. It is a way for us to use `homestead.app` and route that to the ip address of the Homestead vm. `192.168.10.10  homestead.app` should be added your hosts file.
 
 ## Bringing up the virtual machine
 
-Let's install and bring up the vagrant machine now. From the ```~/Homestead``` directory run ```vagrant up```. This will install all the included software listed above which should take a few minutes.
+Let's install and bring up the vagrant machine now. From the `~/Homestead` directory run `vagrant up`. This will install all the included software listed above which should take a few minutes. It can take longer on the first run - considerably so - so be patient!
 
-Now lets try to hit the url and see if everything installed correctly. Go to your browser and type in ```http://homestead.app```. You should see an nginx error. (checking to see if this is true)
+Now lets try to hit the url and see if everything installed correctly. Go to your browser and type in `http://homestead.app`. You should see an nginx error. (checking to see if this is true)
