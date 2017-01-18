@@ -121,12 +121,9 @@ DB_PASSWORD=secret
 
 ## Setting up our hosts file
 
-Lets edit our hosts file so we can point our new app to the server.
+Lets edit our hosts file so we can point our new app to the server. Remember, you'll need administrator privileges to edit this particular file (`/etc/hosts` on Linux or macOS, `C:\Windows\System32\drivers\etc\hosts` on Windows).
 
 ```
-subl /etc/hosts
-
-
 // Add the line
 192.168.10.10  blog.app
 ```
