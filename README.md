@@ -2,7 +2,7 @@
 
 # PHP Artisan Tool
 
-The `Artisan Console` is a great tool that we use for developing our apps. When I mentioned earlier that we generate our `Middleware`, `Controllers`, `Requests` and `Models` we do so through this file.
+The `Artisan Console` is a great tool that we use for developing our apps. When I mentioned earlier that we generate our `Middleware`, `Controllers`, `Requests` and `Models` - we do so through this file.
 
 If we run `php artisan` you will see a list of commands available that we can run to help with our applications.
 
@@ -100,9 +100,9 @@ Available commands:
   view:clear          Clear all compiled view files
 ```
 
-## Generating files
+## Generating Files
 
-A few commands will be using quite a bit for generating files will be:
+A few commands we will be using quite a bit for generating files will be:
 
 `php artisan make:controller OurControllerName` - create a controller file.
 
@@ -114,14 +114,14 @@ A few commands will be using quite a bit for generating files will be:
 
 `php artisan make:request OurRequestName` - create a request file.
 
-## Migration commands
+## Migration Commands
 
 `php artisan migrate:install` - install migration table.
 
 `php artisan migrate` - run our migrations.
 
-`php artisan migrate:refresh` - reset and rerun all database migrations. Think of it like delete all and make them again.
+`php artisan migrate:refresh` - reset and rerun all database migrations. Think of it like a "delete all and make them again" command.
 
-## Checking our routes
+## Checking Our Routes
 
 `php artisan route:list` - checks our list of available routes for the application.
