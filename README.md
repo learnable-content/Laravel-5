@@ -1,16 +1,16 @@
 ![](Laravel_5_Basics_handouts/headings/2.5.png)
 
-# The power behind blade templating
+# The Power Behind Blade Templating
 
-Blade is a template engine that comes with Laravel. All of the blade syntax gets compiled into php in the end. Blade syntax makes it easier for us to keep our html syntax clean and separated from any php code. So all of the following are done in the View "V" of the MVC framework.
+Blade is a template engine that comes with Laravel. All of the blade syntax gets compiled into PHP in the end. Blade syntax makes it easier for us to keep our HTML syntax clean and separated from any PHP code. So all of the following are done in the View "V" of the MVC framework.
 
-## File extension
+## File Extension
 
-Like we discussed before when we return a view `view('posts');` the file can be either of two paths `resources/views/posts.php` or `resources/views/posts.blade.php`. To take advantage of blade syntax we need to make sure the file name ends in `.blade.php`. This will tell Laravel that we want to use blade syntax on the file.
+Like we discussed before, when we return a view `view('posts');` the file can be one of two paths `resources/views/posts.php` or `resources/views/posts.blade.php`. To take advantage of blade syntax, we need to make sure the file name ends in `.blade.php`. This will tell Laravel that we want to use blade syntax on the file.
 
 ## Main Layout
 
-Usually I create a main layout file for all my applications. I then use or extend from this layout for all my pages. If for any reason I have something that is too different in structure I would then just create another layout for that need. Let's create `resources/views/layouts/master.blade.php` file. Here is where I start the main skeleton structure of the site layout. Since I will probably be using bootstrap I have a bootstrap starter template.
+Usually I create a main layout file for all my applications. I then use or extend from this layout for all my pages. If for any reason I have something that is too different in structure, I would then just create another layout for that need. Let's create `resources/views/layouts/master.blade.php` file. Here is where I start the main skeleton structure of the site layout. Since I will probably be using Bootstrap, I have a Bootstrap starter template.
 
 ```
 <!DOCTYPE html>
@@ -71,11 +71,11 @@ When we return a view like before we do `return view('posts');` which means we s
 
 ### @yield
 
-Looking at the above we are saying we want to extend master template that is in the layouts folder. `layouts.master` is the same as saying we want to use the html from `layouts/master.blade.php`. When we see the `@yield('title')` in the main layout we can place content there by doing the `@section('title', 'Blog title')`.
+Looking at the above we are saying we want to extend master template that is in the layouts folder. `layouts.master` is the same as saying we want to use the HTML from `layouts/master.blade.php`. When we see the `@yield('title')` in the main layout we can place content there by doing the `@section('title', 'Blog title')`.
 
 ### @parent
 
-The `@parent` is saying to allow the parent content here and then append whatever we add to it.
+The `@parent` is saying to allow the parent content here, and then append whatever we add to it.
 
 ### @section
 
@@ -83,17 +83,17 @@ The `@section('content')` along with the `@endsection` enclose content that will
 
 ### @include
 
-This include works the exact same as our regular include inside of php. Sometimes we break away chunks of the main layout that we want included in other layouts. So we don't duplicate code `@include` is a great way to achieve this.
+This include works the exact same as our regular include inside of PHP. Sometimes we break away chunks of the main layout that we want included in other layouts so that we don't duplicate code. The `@include` is a great way to achieve this.
 
-## Showing data
+## Showing Data
 
-So normally in php files we would do `<?php echo $some_variable ?>`. Lets say that this was data coming from the database and someone entered in html to attack our our site then we would do `<?php echo htmlentities('$some_variable'); ?>`. With blade syntax we can do the same like so `{{ $some_variable }}` and that is all we need. If you're using a front-end framework like VueJS you can ignore it `@{{ var }}`. Another cool thing to do is for some reason what if you wanted to check the value if it exists and if not display other data. Blade syntax gives us `{{ $some_variable or 'Us this instead' }}`. Saying if `$some_variable` does not exist then use the default string we pass it.
+Normally in PHP files we would do `<?php echo $some_variable ?>`. Lets say that this was data coming from the database and someone entered in HTML to attack our our site then we would do `<?php echo htmlentities('$some_variable'); ?>`. With blade syntax we can do the same like so `{{ $some_variable }}` and that is all we need. If you're using a frontend framework like Vue.JS you can ignore it `@{{ var }}`. Another cool thing to do is, for example, if you wanted to check if a value exists and if not, display other data. Blade syntax gives us `{{ $some_variable or 'Us this instead' }}`. Saying if `$some_variable` does not exist, then use the default string we pass it.
 
-## Control structures
+## Control Structures
 
 ### If/elseif/else
 
-In php sometimes we need to wrap our views in conditionals so that we can show or not show any conetnt that we would like. We do so with `if` and `if else` statements. Blade helps us clean up this syntax a little bit too. See the differences between the two.
+In PHP sometimes we need to wrap our views in conditionals, so that we can show or not show any content that we would like. We do so with `if` and `if else` statements. Blade helps us clean up this syntax a little bit too. See the differences between the two.
 
 ```
 <?php if(condition) { ?>
@@ -115,9 +115,9 @@ __Blade Syntax__
 
 ### Looping
 
-Every loop available to us in php are also available in blade syntax. See the following ways to loop.
+Every type of loop available to us in PHP is also available in blade syntax. See the following ways to loop:
 
-A for loop can be written like this.
+A for loop can be written like this:
 
 ```
 @for ($i = 0; $i < 10; $i++)
@@ -125,7 +125,7 @@ A for loop can be written like this.
 @endfor
 ```
 
-If we need to loop through data provided that we have an array we can use a foreach directive.
+If we need to loop through data, provided that we have an array, we can use a foreach directive:
 
 ```
 @foreach ($posts as $post)
@@ -133,7 +133,7 @@ If we need to loop through data provided that we have an array we can use a fore
 @endforeach
 ```
 
-Then we can do a while loop like the following.
+Then we can do a while loop like the following:
 
 ```
 @while (condition)
