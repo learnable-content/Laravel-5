@@ -14,7 +14,9 @@ One of the things we will be doing for our application is creating our own migra
 
 First we run the migration and pass a name to it which will create our migration file. We can pass what we call a flag with `--create=posts` which gives additional instructions to our migration file. In this case we get extra code in our file so we don't have to go searching for what we need.
 
-```php artisan make:migration create_posts_table --create=posts```
+```
+php artisan make:migration create_posts_table --create=posts
+```
 
 This created a file for us with the following content:
 
@@ -50,7 +52,7 @@ class CreatePostsTable extends Migration
     }
 }
 ```
-We have an up() method and a down() method. The up() method is where we put the code that will create our database. The current one will only create an id that increments and two timestamp fields. `created_at` and `updated_at` that will be kept up to date by Laravel. Some additional code before we run the migration for our blog posts could be the following.
+We have an `up()` method and a `down()` method. The `up()` method is where we put the code that will create our database. The current one will only create an `id` that increments and two timestamp fields, `created_at` and `updated_at` that will be kept up to date by Laravel. Some additional code before we run the migration for our blog posts could be the following.
 
 ```
 public function up()
@@ -72,6 +74,7 @@ You will also notice the `down()` method has `Schema::drop('posts');` this will 
 To run our migration we have to do so from the virtual machine. We would run the following.
 
 *Note*: (If you did take my suggestion you can use `homestead ssh`)
+
 ```
 cd ~/Homestead
 vagrant ssh
@@ -80,9 +83,9 @@ php artisan migrate:install
 php artisan migrate
 ```
 
-If we connect to our sequel pro you will see a new table called migrations. This table will keep track of all our migrations when we refresh or reset our databases.
+If we connect to our Sequel Pro you will see a new table called `migrations`. This table will keep track of all our migrations when we refresh or reset our databases.
 
-The first command will install the migrations table and the second command will install the table `posts` with the tables.
+The first command will install the `migrations` table and the second command will install the table `posts` with the tables.
 
 - id
 - title
@@ -90,4 +93,4 @@ The first command will install the migrations table and the second command will 
 - created_at
 - updated_at
 
-You may also see a table users there. This is a migration that comes preinstalled with Laravel install. This is because we get authentication out of the box.
+You may also see a table `users` there. This is a migration that comes preinstalled with Laravel. This is because we get authentication out of the box.
